@@ -4,21 +4,175 @@
 <meta charset="UTF-8">
 <title>Edit profile</title>
 <link rel="icon" href="logo.png">
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: url('sign_in_bg.png') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+    margin: 0;
+    padding-top: 20px; 
+    color: #333;
+  }
+  .profile-container {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px;
+  }
+  .profile-container img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+  }
+  .profile-container label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+  }
+  .profile-container input[type="text"],
+  .profile-container input[type="password"],
+  .profile-container select {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  .profile-container input[type="radio"] {
+    margin-right: 5px;
+  }
+  .profile-container input[type="file"] {
+    display: none; 
+  }
+  .custom-file-upload {
+    background-color: #7d9b9d; 
+    color: white; 
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px; 
+    margin: 10px 5px;
+    cursor: pointer; 
+    border-radius: 8px; 
+    transition: background-color 0.3s ease; 
+  }
+  .custom-file-upload:hover {
+    background-color: #2f969d; 
+  }
+  .profile-container button {
+    background-color: #7d9b9d; 
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 5px;
+    cursor: pointer; 
+    border-radius: 8px;
+    transition: background-color 0.3s ease; 
+  }
+  .profile-container button:hover {
+    background-color: #2f969d; 
+  }
+  .gender-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  .gender-container label {
+    display: inline-flex;
+    align-items: center;
+    margin: 0 10px;
+  }
+  .file-name {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #555;
+  }
+  .to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #7d9b9d; 
+    color: white; 
+    border: none;
+    padding: 14px 20px;
+	font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    transition: background-color 0.3s ease; 
+  }
+  .to-top:hover {
+    background-color: #2f969d; 
+  }
+</style>
 </head>
-<body><b>
-<img id="pp" src="user.png" style="position: top: 130px; left: 510px; width: 50px; height: 50px;">
-<br>
-<label for=pp align=center>
+<body>
+<div class="profile-container">
+  <div id="user-info">
+    <br>
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const name = urlParams.get('id');
+      const password = urlParams.get('password');
+      document.write(`<img id="profile-pic" src="user.png"><br><b>${name}<br>Edit your profile please</b>`);
+    </script>
+  </div>
+  <form id="profile-form" method="post" enctype="multipart/form-data">
+    <label for="name">Name:</label>
+    <input type="text" required id="name" name="name">
+    <label for="pass">New Password:</label>
+    <input type="password" required id="pass" name="pass" minlength="6" placeholder="Enter a new password more than 6 characters">
+    <label for="dep">Department:</label>
+    <input type="text" required id="dep" name="dep" placeholder="Enter your department">
+    <label for="gen">Gender:</label>
+    <div class="gender-container">
+      <label for="gen1">
+        <input type="radio" required id="gen1" name="gender" value="Male"> Male 
+      </label>
+      <label for="gen2">
+        <input type="radio" required id="gen2" name="gender" value="Female"> Female 
+      </label>
+    </div>
+    <label for="newpp" class="custom-file-upload">Change Profile Picture</label>
+    <input type="file" id="newpp" name="newpp" onchange="updateFileName()">
+    <div id="file-name" class="file-name"></div>
+    <label for="subjs">Choose your subjects:</label>
+    <select id="subjs" name="subjs" multiple required>
+      <option value="" disabled selected>Select your subjects</option>
+      <option value="WD">Web Design</option>
+      <option value="DS">DataStructure</option>
+      <option value="SA">System Analysis</option>
+      <option value="Java">Java</option>
+      <option value="CPP">C++</option>
+      <option value="Python">Python</option>
+    </select>
+    <button type="submit">Submit</button>
+    <button type="reset">Reset</button>
+  </form>
+</div>
+<button class="to-top" onclick="scrollToTop()">↑</button>
 <script>
-  // Get URL parameters
-  const urlParams = new URLSearchParams(window.location.search);
-  const name = urlParams.get('id');
-  const password = urlParams.get('password');
-
-  // Display the values
- 
-  document.write(`${name}`);
-</script></b>
-</label>
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
 </body>
 </html>
