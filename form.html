@@ -49,25 +49,6 @@
   .profile-container input[type="radio"] {
     margin-right: 5px;
   }
-  .profile-container input[type="file"] {
-    display: none; 
-  }
-  .custom-file-upload {
-    background-color: #7d9b9d; 
-    color: white; 
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px; 
-    margin: 10px 5px;
-    cursor: pointer; 
-    border-radius: 8px; 
-    transition: background-color 0.3s ease; 
-  }
-  .custom-file-upload:hover {
-    background-color: #2f969d; 
-  }
   .profile-container button {
     background-color: #7d9b9d; 
     border: none;
@@ -109,7 +90,7 @@
     color: white; 
     border: none;
     padding: 14px 20px;
-	font-weight: bold;
+    font-weight: bold;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -132,7 +113,7 @@
       const urlParams = new URLSearchParams(window.location.search);
       const name = urlParams.get('id');
       const password = urlParams.get('password');
-      document.write(`<img id="profile-pic" src="user.png"><br><b>${name}<br>Edit your profile please</b>`);
+      document.write(`<img src="user.png"><br><b>${name}<br>Edit your profile please</b>`);
     </script>
   </div>
   <form id="profile-form" method="post" enctype="multipart/form-data">
@@ -151,9 +132,6 @@
         <input type="radio" required id="gen2" name="gender" value="Female"> Female 
       </label>
     </div>
-    <label for="newpp" class="custom-file-upload">Change Profile Picture</label>
-    <input type="file" id="newpp" name="newpp" onchange="updateFileName()">
-    <div id="file-name" class="file-name"></div>
     <label for="subjs">Choose your subjects:</label>
     <select id="subjs" name="subjs" multiple required>
       <option value="" disabled selected>Select your subjects</option>
@@ -173,6 +151,13 @@
   function scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
+
+  document.getElementById('profile-form').onsubmit = function(event) {
+    event.preventDefault();
+    var formData = new FormData(document.getElementById('profile-form'));
+    var queryString = new URLSearchParams(formData).toString();
+    window.location.href = 'summary.html?' + queryString;
+  };
 </script>
 </body>
 </html>

@@ -87,11 +87,10 @@
             };
             
             const subjs = subjsArray.map(subj => subjectsMap[subj] || subj).join(', ');
-            const profilePic = urlParams.get('newpp') ? 'user.png' : '';
 
             document.write(`<table>
             <tr>
-            <td rowspan=6><img id="profile-pic" src="${profilePic}" height=140px width=140px></td></tr>
+            <td rowspan=6><img src="user.png" height=140px width=140px></td></tr>
             <tr><td>Hey ${name}</td></tr>
             <tr>
             <td>Your new password is: <span class="password">${password}</span></td></tr>
