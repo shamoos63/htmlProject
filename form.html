@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Edit profile</title>
+<link rel="icon" href="logo.png">
+</head>
+<body><b>
+<img id="pp" src="user.png" style="position: top: 130px; left: 510px; width: 50px; height: 50px;">
+<br>
+<label for=pp align=center>
+<script>
+  // Get URL parameters
+  const urlParams = new URLSearchParams(window.location.search);
+  const name = urlParams.get('id');
+  const password = urlParams.get('password');
+
+  // Display the values
+ 
+  document.write(`${name}`);
+</script></b>
+</label>
+</body>
+</html>
