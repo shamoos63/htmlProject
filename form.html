@@ -112,13 +112,16 @@
       const name = urlParams.get('id');
       const password = urlParams.get('password');
       document.write(`<img src="user.png"><br><b>${name}<br>Edit your profile please</b>`);
+      window.onload = function() {
+        document.getElementById('pass').placeholder = `Your old password is ${password}`;
+      };
     </script>
   </div>
   <form id="profile-form" method="post">
     <label for="name">Name:</label>
     <input type="text" required id="name" name="name">
     <label for="pass">New Password:</label>
-    <input type="password" required id="pass" name="pass" minlength="6" placeholder="Enter a new password more than 6 characters">
+    <input type="password" required id="pass" name="pass" minlength="6">
     <label for="dep">Department:</label>
     <input type="text" required id="dep" name="dep" placeholder="Enter your department">
     <label for="gen">Gender:</label>
