@@ -4,7 +4,19 @@
 <meta charset="UTF-8">
 <title>Login Page</title>
 <link rel="icon" href="logo.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
+  body {
+    background: url('sign_in_bg.png') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
   .background-container {
     position: relative;
     display: inline-block;
@@ -13,10 +25,9 @@
     border-radius: 15px; /* Adds curviness to the edges */
     background: rgba(255, 255, 255, 0.8); /* White background with slight transparency */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow for depth */
-  }
-  .content {
-    position: relative;
-    z-index: 1;
+    width: 90%;
+    max-width: 400px; /* Maximum width for larger screens */
+    box-sizing: border-box;
   }
   .button {
     background-color: #7d9b9d; /* Green background */
@@ -35,42 +46,63 @@
   .button:hover {
     background-color: #2f969d; /* Darker green background on hover */
   }
+  input[type="tel"],
+  input[type="password"] {
+    width: 100%; /* Full width */
+    padding: 12px 20px; /* Padding */
+    margin: 8px 0; /* Margin */
+    display: inline-block; /* Inline block */
+    border: 1px solid #ccc; /* Border */
+    border-radius: 4px; /* Rounded corners */
+    box-sizing: border-box; /* Box sizing */
+    font-size: 16px; /* Font size */
+  }
+  input[type="tel"]:focus,
+  input[type="password"]:focus {
+    border-color: #7d9b9d; /* Border color on focus */
+    box-shadow: 0 0 5px rgba(125, 155, 157, 0.5); /* Shadow effect on focus */
+    outline: none; /* Remove outline */
+  }
+  table {
+    width: 100%; /* Full width */
+  }
+  th, td {
+    padding: 10px;
+    text-align: center;
+  }
+  img {
+    max-width: 100%;
+    height: auto; /* Responsive image */
+  }
 </style>
 </head>
-<body background="sign_in_bg.png">
+<body>
 <center>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 <div class="background-container">
   <div class="content">
     <form action="form.html" method="get" target="_self">
       <table>
         <tr rowspan=5></tr>
         <tr>
-          <th><img src="logo.png"></th>
+          <th><img src="logo.png" alt="Logo"></th>
         </tr>
         <tr></tr>
         <tr>
-          <th><font face="Poppins" color="Gray"><label for="stu#">Enter Your College Number</label></font></th>
+          <th><label for="stu#" style="font-family: 'Poppins'; color: Gray;">Enter Your College Number</label></th>
         </tr>
         <tr>
-          <td align="center"><input type="tel" id="name" name="id" pattern="202\d{6}" placeholder="ex:202312345" required></td>
+          <td><input type="tel" id="name" name="id" pattern="202\d{6}" placeholder="ex:202312345" required></td>
         </tr>
         <tr>
-          <th><font face="Poppins" color="Gray"><label for="pass">Enter Your Password</label></font></th>
+          <th><label for="pass" style="font-family: 'Poppins'; color: Gray;">Enter Your Password</label></th>
         </tr>
         <tr>
-          <td align="center"><input type="password" id="password" name="password" required minlength="6"></td>
+          <td><input type="password" id="password" name="password" required minlength="6"></td>
         </tr>
         <tr>
-          <td align="center">
+          <td>
             <button type="submit" class="button">Submit</button>
-            <button type="reset" class="button">Reset</button>
+           
           </td>
         </tr>
       </table>

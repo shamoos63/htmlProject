@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>Edit profile</title>
 <link rel="icon" href="logo.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
   body {
     font-family: 'Poppins', sans-serif;
@@ -23,7 +24,9 @@
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
-    width: 300px;
+    width: 90%;
+    max-width: 300px; /* Maximum width for larger screens */
+    box-sizing: border-box;
   }
   .profile-container img {
     width: 80px;
@@ -77,11 +80,6 @@
     align-items: center;
     margin: 0 10px;
   }
-  .file-name {
-    margin-top: 10px;
-    font-size: 14px;
-    color: #555;
-  }
   .to-top {
     position: fixed;
     bottom: 20px;
@@ -116,7 +114,7 @@
       document.write(`<img src="user.png"><br><b>${name}<br>Edit your profile please</b>`);
     </script>
   </div>
-  <form id="profile-form" method="post" enctype="multipart/form-data">
+  <form id="profile-form" method="post">
     <label for="name">Name:</label>
     <input type="text" required id="name" name="name">
     <label for="pass">New Password:</label>
